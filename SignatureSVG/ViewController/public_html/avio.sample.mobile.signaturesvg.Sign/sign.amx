@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt" xmlns:avio="http://www.avioconsulting.com/maf">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Sign" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandButton id="cb1"/>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2"/>
+        </amx:facet>
+        <amx:panelStretchLayout id="psl1">
+            <amx:facet name="top"/>
+            <amx:facet name="center">
+                <amx:panelGroupLayout id="pgl1">
+                    <amx:outputText value="Signature Data" id="ot2"/>
+                    <amx:outputText value="#{viewScope.signatureData}" id="ot3"/>
+                </amx:panelGroupLayout>
+            </amx:facet>
+            <amx:facet name="bottom">
+                <avio:signature id="asig1" width="#{deviceScope.hardware.screen.width}" height="200"
+                                value="#{viewScope.signatureData}"></avio:signature>
+            </amx:facet>
+        </amx:panelStretchLayout>
+    </amx:panelPage>
+</amx:view>
