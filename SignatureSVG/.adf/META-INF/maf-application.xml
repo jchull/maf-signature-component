@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <adfmf:application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf"
-                   version="1.0" name="SignatureSVG" id="com.company.SignatureSVG"
+                   version="1.0" name="SignatureSVG" id="avio.SignatureSVG"
                    appControllerFolder="ApplicationController"
                    listener-class="avio.sample.mobile.signaturesvg.application.LifeCycleListenerImpl">
   <adfmf:featureReference refId="avio.sample.mobile.signaturesvg.Sign" id="fr1"/>
+  <adfmf:navigation>
+    <adfmf:springboard animation="slideright"/>
+  </adfmf:navigation>
 </adfmf:application>

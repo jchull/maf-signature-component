@@ -1,13 +1,16 @@
 (function () {
     getRenderSignatureBlock = function () {
         return function (amxNode, id) {
-            width = amxNode.getAttribute('width');
+            width = amxNode.getAttribute('width'); 
             height = amxNode.getAttribute('height');
+            
+            // element to contain the SVG
             rootElement = document.createElement('div');
             rootElement.setAttribute('class', 'sig-container');
             // use pixel values to make sure the signature doesn't get squished
             rootElement.setAttribute('style', 'width: ' + width + 'px; height: ' + height + 'px;');
 
+            // namespace is important when creating SVG elements
             var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
             svg.setAttribute('id', amxNode.getAttribute('id') || 'svgSig');//FIXME: should increment or rand
             svg.setAttribute('width', width);
@@ -21,6 +24,7 @@
             
             svg.appendChild(document.createElementNS('http://www.w3.org/2000/svg', 'defs'));
 
+            // if there is a value returned from the EL value, it will set here, otherwise it will be empty
             var signaturePath = amxNode.getAttribute('value') || '';
             var isDown = false;
 
@@ -28,6 +32,7 @@
                 signaturePath = '';
                 p.setAttribute('d', signaturePath);
                 amxNode.setAttribute('value', signaturePath);
+                // don't let the events cause signature to be drawn when the clear button is pressed
                 if(e) e.preventDefault();
             }
 
@@ -63,6 +68,7 @@
 
             function up(e) {
                 isDown = false;
+                // don't need to update the value until drawing stops, update now
                 amxNode.setAttribute('value', signaturePath);
                 if (isTouchEvent(e))
                     e.preventDefault();
@@ -74,7 +80,7 @@
             r.setAttribute('width', width);
             r.setAttribute('height', height);
 
-// TODO: use AMX event bubbling here
+            // TODO: use AMX event bubbling here
             r.addEventListener('mousedown', down, false);
             r.addEventListener('mousemove', move, false);
             r.addEventListener('mouseup', up, false);

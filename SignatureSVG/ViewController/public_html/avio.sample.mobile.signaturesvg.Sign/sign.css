@@ -1,20 +1,18 @@
 @charset "US-ASCII";
 
-
-
 .sig-block {
-    fill: rgb(255,248,226);
-    stroke-width: 1;
-    stroke: red;
+    fill: rgb(255,248,226); /* Background color for signature block, gradients allowed */
+    stroke-width: 1; /* A border on the signature block */
+    stroke: red; /* Border color on signature block */
 }
 
 .sig-ink {
-    stroke-width: 1;
-    stroke: red;
-    fill: none;
+    stroke-width: 1; /* width of the signature path */
+    stroke: red; /* color of signature path */
+    fill: none; /* so it doesn't close and fill a polygon */
 }
 
 .clr-sig {
-    stroke: blue;
-    font-size: 24;
+    stroke: blue; /* color of link for clearing signature data */
+    font-size: 24; /* size of font on button */
 }
